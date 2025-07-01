@@ -29,32 +29,6 @@
           "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Files.cs",
-              "DocumentMoniker": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Models\\Files.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\Models\\Files.cs",
-              "ToolTip": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Models\\Files.cs",
-              "RelativeToolTip": "WebApplication1\\Models\\Files.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T12:06:52.25Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WebApplication1",
-              "DocumentMoniker": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-              "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.csproj",
-              "ToolTip": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\WebApplication1.csproj*",
-              "RelativeToolTip": "WebApplication1\\WebApplication1.csproj*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-01T12:06:25.606Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
@@ -68,13 +42,37 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Files.cs",
+              "DocumentMoniker": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Models\\Files.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Files.cs",
+              "ToolTip": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Models\\Files.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Files.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T12:06:52.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WebApplication1.csproj",
+              "DocumentMoniker": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.csproj",
+              "ToolTip": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeToolTip": "WebApplication1\\WebApplication1.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-01T12:06:25.606Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "pdfController.cs",
               "DocumentMoniker": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Controllers\\pdfController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\pdfController.cs",
               "ToolTip": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Controllers\\pdfController.cs",
               "RelativeToolTip": "WebApplication1\\Controllers\\pdfController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAAEMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T11:51:03.23Z",
               "EditorCaption": ""
@@ -89,8 +87,7 @@
               "RelativeToolTip": "WebApplication1\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T11:47:46.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T11:47:46.62Z"
             }
           ]
         }
