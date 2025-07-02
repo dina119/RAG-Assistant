@@ -12,8 +12,16 @@ namespace WebApplication1.Controllers
     public class pdfController : ControllerBase
     {
 
+
+        private readonly IConfiguration _config;
+
+        public pdfController(IConfiguration config)
+        {
+            _config = config;
+        }
+
         [HttpPost("extract-text")]
-        public IActionResult ExtractTextFromPdf([FromForm] Files File)
+        public async Task<IActionResult> ExtractTextFromPdfAsync([FromForm] Files File)
         {
             if (File.File == null || File.File.Length == 0)
                 return BadRequest("No file uploaded");
@@ -25,8 +33,19 @@ namespace WebApplication1.Controllers
                 var text = string.Join("\n", pdf.GetPages().Select(p => p.Text));
                 // ✨ chunk the text
                 var chunks = SafeSplitBySentences(text);
+                // 🔐 جلب مفتاح API من الإعدادات
+        var apiKey = _config["OpenAI:ApiKey"];
 
-                return Ok(chunks); // يرجعهم كـ array of strings
+        // 🧬 تحويل كل chunk إلى Embedding
+        var embeddings = await GetEmbeddingsFromOpenAI(chunks, apiKey);
+
+        // ✨ نرجع الـ chunks مع الـ embeddings
+        var result = chunks.Select((chunk, index) => new
+        {
+            Text = chunk,
+            Embedding = embeddings[index]
+        });
+                return Ok(result); // يرجعهم كـ array of strings
                                    // return Ok(text);
             }
             catch (Exception ex)
