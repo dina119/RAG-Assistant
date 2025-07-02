@@ -31,9 +31,9 @@ namespace WebApplication1.Controllers
                 using var stream = File.File.OpenReadStream();
                 using var pdf = PdfDocument.Open(stream);
                 var text = string.Join("\n", pdf.GetPages().Select(p => p.Text));
-                // ✨ chunk the text
+                //  chunk the text
                 var chunks = SafeSplitBySentences(text);
-                // 🔐 جلب مفتاح API من الإعدادات
+                // جلب مفتاح API من الإعدادات
         var apiKey = _config["OpenAI:ApiKey"];
 
         // 🧬 تحويل كل chunk إلى Embedding
@@ -45,7 +45,7 @@ namespace WebApplication1.Controllers
             Text = chunk,
             Embedding = embeddings[index]
         });
-                return Ok(result); // يرجعهم كـ array of strings
+                return Ok(result); 
                                    // return Ok(text);
             }
             catch (Exception ex)
