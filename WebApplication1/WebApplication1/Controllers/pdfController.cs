@@ -5,6 +5,7 @@ using UglyToad.PdfPig;
 using WebApplication1.Models;
 using OpenAI;
 using OpenAI.Embeddings;
+using System.Text.Json;
 namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
@@ -34,10 +35,15 @@ namespace WebApplication1.Controllers
                 //  chunk the text
                 var chunks = SafeSplitBySentences(text);
                 // جلب مفتاح API من الإعدادات
-        var apiKey = _config["OpenAI:ApiKey"];
+       // var apiKey = _config["Gemini:ApiKey"];
 
         // 🧬 تحويل كل chunk إلى Embedding
-        var embeddings = await GetEmbeddingsFromOpenAI(chunks, apiKey);
+        var embeddings = new List<float[]>();
+        foreach (var chunk in chunks)
+        {
+            var embedding = await GetEmbeddingsFromOpenAI(chunk,"AIzaSyB_rhC4wFohvN_xT-J2lmQYQ4TMA0QdVqc");
+            embeddings.Add(embedding);
+        }
 
         // ✨ نرجع الـ chunks مع الـ embeddings
         var result = chunks.Select((chunk, index) => new
@@ -102,24 +108,39 @@ namespace WebApplication1.Controllers
 
 
 
-        private async Task<List<double[]>> GetEmbeddingsFromOpenAI(List<string> chunks, string apiKey)
+        private async Task<float[]> GetEmbeddingsFromOpenAI(string text, string apiKey)
         {
-             var client = new OpenAIClient(apiKey);
-            var embeddings = new List<double[]>();
+             var http = new HttpClient();
+    http.DefaultRequestHeaders.Add("x-goog-api-key", apiKey);
 
-            foreach (var chunk in chunks)
-            {
-               var result = await client.EmbeddingsEndpoint.CreateEmbeddingAsync(
-            input: chunk,
-            model: "text-embedding-3-small"
-        );
+    var payload = new
+    {
+        instances = new[] { new { content = text } }
+    };
 
-        var embedding = result.Data[0].Embedding.ToArray();
+    var content = new StringContent(
+        JsonSerializer.Serialize(payload),
+        Encoding.UTF8,
+        "application/json"
+    );
 
-        embeddings.Add(embedding);
-            }
+    var response = await http.PostAsync(
+        "https://us-central1-aiplatform.googleapis.com/v1/projects/geminirag-464720/locations/us-central1/publishers/google/models/textembedding-gecko:predict?key=" + apiKey,
+        content
+    );
 
-            return embeddings;
+    var json = await response.Content.ReadAsStringAsync();
+    var doc = JsonDocument.Parse(json);
+
+    var values = doc.RootElement
+        .GetProperty("predictions")[0]
+        .GetProperty("embeddings")
+        .GetProperty("values")
+        .EnumerateArray()
+        .Select(e => (float)e.GetDouble())
+        .ToArray();
+
+    return values;
         }
 
     }
