@@ -41,8 +41,8 @@ namespace WebApplication1.Controllers
         var embeddings = new List<float[]>();
         foreach (var chunk in chunks)
         {
-            var embedding = await GetEmbeddingsFromOpenAI(chunk,"AIzaSyB_rhC4wFohvN_xT-J2lmQYQ4TMA0QdVqc");
-            embeddings.Add(embedding);
+            var embedding = await  GetEmbeddingFromPythonAsync(chunk);
+            embeddings.Add(embedding.ToArray());
         }
 
         // ✨ نرجع الـ chunks مع الـ embeddings
@@ -108,40 +108,32 @@ namespace WebApplication1.Controllers
 
 
 
-        private async Task<float[]> GetEmbeddingsFromOpenAI(string text, string apiKey)
-        {
-             var http = new HttpClient();
-    http.DefaultRequestHeaders.Add("x-goog-api-key", apiKey);
+        // 📌 ده بيرسل الـ chunk لبايثون اللي بيرجع الـ embedding
+private async Task<List<float>> GetEmbeddingFromPythonAsync(string chunk)
+{
+    using var client = new HttpClient();
 
-    var payload = new
-    {
-        instances = new[] { new { content = text } }
-    };
+    var json = JsonSerializer.Serialize(new { text = chunk });
 
-    var content = new StringContent(
-        JsonSerializer.Serialize(payload),
-        Encoding.UTF8,
-        "application/json"
-    );
+    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-    var response = await http.PostAsync(
-        "https://us-central1-aiplatform.googleapis.com/v1/projects/geminirag-464720/locations/us-central1/publishers/google/models/textembedding-gecko:predict?key=" + apiKey,
-        content
-    );
+    var response = await client.PostAsync("http://localhost:5000/get-embedding", content);
 
-    var json = await response.Content.ReadAsStringAsync();
-    var doc = JsonDocument.Parse(json);
+    if (!response.IsSuccessStatusCode)
+        throw new Exception("Python server error");
 
+    var result = await response.Content.ReadAsStringAsync();
+
+    var doc = JsonDocument.Parse(result);
     var values = doc.RootElement
-        .GetProperty("predictions")[0]
-        .GetProperty("embeddings")
-        .GetProperty("values")
+        .GetProperty("embedding")
         .EnumerateArray()
-        .Select(e => (float)e.GetDouble())
-        .ToArray();
+        .Select(x => (float)x.GetDouble())
+        .ToList();
 
     return values;
-        }
+}
+
 
     }
 }

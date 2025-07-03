@@ -54,8 +54,7 @@
               "RelativeToolTip": "WebApplication1\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-01T18:59:15.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T18:59:15.162Z"
             },
             {
               "$type": "Document",
@@ -79,8 +78,7 @@
               "RelativeToolTip": "WebApplication1\\WebApplication1.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-07-01T12:06:25.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T12:06:25.606Z"
             },
             {
               "$type": "Document",
@@ -88,9 +86,9 @@
               "Title": "pdfController.cs",
               "DocumentMoniker": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Controllers\\pdfController.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Controllers\\pdfController.cs",
-              "ToolTip": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Controllers\\pdfController.cs",
-              "RelativeToolTip": "WebApplication1\\Controllers\\pdfController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACsAAABoAAAAAAAAAA==",
+              "ToolTip": "F:\\RAG-Assistant\\WebApplication1\\WebApplication1\\Controllers\\pdfController.cs*",
+              "RelativeToolTip": "WebApplication1\\Controllers\\pdfController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHcAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T11:51:03.23Z",
               "EditorCaption": ""
@@ -105,8 +103,7 @@
               "RelativeToolTip": "WebApplication1\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T11:47:46.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T11:47:46.62Z"
             }
           ]
         }
